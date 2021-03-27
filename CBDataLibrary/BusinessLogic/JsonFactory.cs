@@ -14,7 +14,7 @@ namespace CBDataLibrary
         /// <summary>
         /// Loads Json from resources.resx. Deserializes it into a LearnerDTO
         /// </summary>
-        /// <returns>InputModel</returns>
+        /// <returns>LearnerDTO</returns>
         public static LearnerDTO LoadJson()
         {
             string inputJsonLocation = Resources.InputJson;

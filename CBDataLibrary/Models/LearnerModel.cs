@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CBDataLibrary.Models
 {
-    internal class LearnerModel
+    public class LearnerModel
     {
         public int LearnerId { get; set; }
         public int PersonId { get; set; }
