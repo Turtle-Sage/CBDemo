@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CBApp\CBApp.csproj" />
     <ProjectReference Include="..\CBDataLibrary\CBDataLibrary.csproj" />
   </ItemGroup>
 

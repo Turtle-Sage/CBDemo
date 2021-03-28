@@ -5,9 +5,12 @@ using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 
 namespace CBDataLibrary.Models
-{
+{  
+
     public class LearnerModel
     {
+        private string _servicechild;
+
         public int LearnerId { get; set; }
         public int PersonId { get; set; }
         public string LearnerCode { get; set; }
@@ -41,7 +44,23 @@ namespace CBDataLibrary.Models
         public bool GAndT { get; set; }
         public bool MedicalFlag { get; set; }
         public string YSSAIndicator { get; set; }
-        public string ServiceChild { get; set; }
+        public string ServiceChild 
+        { 
+            get => _servicechild;
+
+            set 
+            {
+                if (value == "N")
+                {
+                    _servicechild = "False";
+                }
+                else
+                {
+                    _servicechild = "True";
+                }
+            }         
+        }
+    
         public string ServiceChildSource { get; set; }
         public bool TopUpFunding { get; set; }
         public object FundedHours { get; set; }

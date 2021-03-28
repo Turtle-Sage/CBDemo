@@ -6,9 +6,12 @@ using System.Text;
 using Xunit;
 using System.Linq;
 using CBDataLibrary.BusinessLogic;
+using Microsoft.Extensions.DependencyInjection;
+using CBApp;
 
 namespace CBDataLibrary.Tests
 {
+    
     public class MappersTests
     {
         [Fact]
@@ -18,8 +21,14 @@ namespace CBDataLibrary.Tests
             LearnerDTO dto = new LearnerDTO { LearnerId = 123, LearnerCode = "TestCode", Forename = "Jon", Surname = "Armstrong" };
             LearnerModel model = new LearnerModel();
 
-            //Act
-            Mappers mappers = new Mappers();
+            var services = new ServiceCollection();
+            services.AddAutoMapper(typeof(AutoMapping));
+            services.AddTransient<IMappers, Mappers>();
+
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
+            IMappers mappers = serviceProvider.GetRequiredService<IMappers>();
+
+            //Act            
             model = mappers.LearnerDTOtoLearnerModel(dto);
 
             //Assert
@@ -48,8 +57,14 @@ namespace CBDataLibrary.Tests
             };
             OutputModel output = new OutputModel();
 
-            //Act
-            Mappers mappers = new Mappers();
+            var services = new ServiceCollection();
+            services.AddAutoMapper(typeof(AutoMapping));
+            services.AddTransient<IMappers, Mappers>();
+
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
+            IMappers mappers = serviceProvider.GetRequiredService<IMappers>();
+
+            //Act            
             output = mappers.LearnerModeltoOutputModel(learner);
 
             //Assert
@@ -69,10 +84,17 @@ namespace CBDataLibrary.Tests
         {
             //Arrange
             OutputModel model = new OutputModel { source_id = "789", address_line_1 = "10 Dalton Hill", gender = "M" };
-            OutputDTO dto = new OutputDTO();            
+            OutputDTO dto = new OutputDTO();
+
+            var services = new ServiceCollection();
+            services.AddAutoMapper(typeof(AutoMapping));
+            services.AddTransient<IMappers, Mappers>();
+
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
+            IMappers mappers = serviceProvider.GetRequiredService<IMappers>();
 
             //Act
-            Mappers mappers = new Mappers();
+            //Mappers mappers = new Mappers();
             dto = mappers.OutputModeltoOutputDTO(model);
 
             //Assert

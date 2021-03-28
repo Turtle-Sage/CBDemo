@@ -30,7 +30,7 @@ namespace CBDataLibrary.Models
         public bool is_pp { get; set; }
         public bool service_child { get; set; }
         public bool looked_after { get; set; } = false;
-        public object ever_in_care { get; set; } = false;
+        public object ever_in_care { get; set; }
         public string sen_category { get; set; }
         public string enrolment_status { get; set; }
         public string address_line_1 { get; set; }

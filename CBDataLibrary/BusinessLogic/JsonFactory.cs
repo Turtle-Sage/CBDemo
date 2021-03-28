@@ -27,8 +27,14 @@ namespace CBDataLibrary
             }
         }
 
-
-
+        /// <summary>
+        /// Takes a OutputDTO Object and serializes it.
+        /// </summary>
+        /// <returns>string</returns>
+        public static string JsonSerialize(OutputDTO output)
+        {
+            return JsonConvert.SerializeObject(output);
+        }
 
     }
 }
