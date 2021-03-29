@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CBDataLibrary.BusinessLogic.Interfaces;
 using CBDataLibrary.DTOs;
 using CBDataLibrary.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,12 +9,7 @@ using System.Text;
 
 
 namespace CBDataLibrary.BusinessLogic
-{
-    public interface ILearner
-    {
-        string GetLearner();
-    }
-
+{    
     public class Learner : ILearner
     {
         private readonly IMappers mappers;
@@ -23,6 +19,10 @@ namespace CBDataLibrary.BusinessLogic
             this.mappers = mappers;
         }
 
+        /// <summary>
+        /// Gets Json from Resources and Transforms it into the Output format
+        /// </summary>
+        /// <returns>string</returns>
         public string GetLearner()
         {
             LearnerDTO learnerDTO = JsonFactory.LoadJson();

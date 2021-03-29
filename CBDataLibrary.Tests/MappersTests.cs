@@ -4,14 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-using System.Linq;
 using CBDataLibrary.BusinessLogic;
 using Microsoft.Extensions.DependencyInjection;
-using CBApp;
+using CBDataLibrary.BusinessLogic.Interfaces;
 
 namespace CBDataLibrary.Tests
-{
-    
+{    
     public class MappersTests
     {
         [Fact]
@@ -32,6 +30,7 @@ namespace CBDataLibrary.Tests
             model = mappers.LearnerDTOtoLearnerModel(dto);
 
             //Assert
+            Assert.NotNull(model);
             Assert.Equal(dto.LearnerId, model.LearnerId);
             Assert.Equal(dto.LearnerCode, model.LearnerCode);
             Assert.Equal(dto.Forename, model.Forename);
@@ -67,8 +66,8 @@ namespace CBDataLibrary.Tests
             //Act            
             output = mappers.LearnerModeltoOutputModel(learner);
 
-            //Assert
-            Assert.NotNull(learner);
+            //Assert            
+            Assert.NotNull(output);
             Assert.Equal(learner.LearnerId.ToString(), output.source_id);
             Assert.Equal(learner.Forename, output.first_name);
             Assert.Equal(learner.Surname, output.last_name);
@@ -93,14 +92,14 @@ namespace CBDataLibrary.Tests
             IServiceProvider serviceProvider = services.BuildServiceProvider();
             IMappers mappers = serviceProvider.GetRequiredService<IMappers>();
 
-            //Act
-            //Mappers mappers = new Mappers();
+            //Act            
             dto = mappers.OutputModeltoOutputDTO(model);
 
             //Assert
+            Assert.NotNull(dto);
             Assert.Equal(model.source_id, dto.source_id);
             Assert.Equal(model.address_line_1, dto.address_line_1);
-            Assert.Equal(model.gender, dto.gender);            
+            Assert.Equal(model.gender, dto.gender);
 
         }
 

@@ -1,5 +1,4 @@
 ﻿using CBDataLibrary.DTOs;
-using CBDataLibrary.Models;
 using CBDataLibrary.Properties;
 using Newtonsoft.Json;
 using System;
@@ -21,9 +20,7 @@ namespace CBDataLibrary
             using (StreamReader r = new StreamReader(inputJsonLocation))
             {
                 string json = r.ReadToEnd();
-                LearnerDTO result = JsonConvert.DeserializeObject<LearnerDTO>(json);
-
-                return result;
+                return JsonConvert.DeserializeObject<LearnerDTO>(json);
             }
         }
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-using CBDataLibrary;
 using CBDataLibrary.DTOs;
 
 namespace CBDataLibrary.Tests
